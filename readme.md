@@ -22,6 +22,12 @@ user.setLastName("Jung");
 user.setEmailAddress("mhanjung@gmail.com");
 ```
 
+### Email Receiver setting in HTML
+URL:
+```
+http://localhost:8080/email.html
+```
+
 ### Trouble shooting
     
 Case 1:
