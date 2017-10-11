@@ -1,5 +1,6 @@
 package io.github.mhanjung.sendingemail.controller;
 
+import io.github.mhanjung.sendingemail.domain.EmailDto;
 import io.github.mhanjung.sendingemail.domain.User;
 import io.github.mhanjung.sendingemail.service.NotificationService;
 import org.slf4j.Logger;
@@ -37,5 +38,17 @@ public class RegistrationController {
         }
 
         return "Thank you for registering with us.";
+    }
+
+    @RequestMapping("/send")
+    public String send(EmailDto emailDto) {
+
+        try {
+            notificationService.sendEmail(emailDto);
+        } catch (MailException e) {
+            log.info(e.getMessage());
+        }
+
+        return "Success!";
     }
 }

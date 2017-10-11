@@ -1,5 +1,6 @@
 package io.github.mhanjung.sendingemail.service;
 
+import io.github.mhanjung.sendingemail.domain.EmailDto;
 import io.github.mhanjung.sendingemail.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
@@ -23,6 +24,16 @@ public class NotificationService {
         mail.setTo(user.getEmailAddress());
         mail.setSubject("Toys for shots is coming Soon!");
         mail.setText("This is a cool email notification");
+
+        javaMailSender.send(mail);
+    }
+
+    public void sendEmail(EmailDto emailDto) throws MailException {
+        //send email
+        SimpleMailMessage mail = new SimpleMailMessage();
+        mail.setTo(emailDto.getEmailAddressTo());
+        mail.setSubject(emailDto.getEmailTitle());
+        mail.setText(emailDto.getEmailContent());
 
         javaMailSender.send(mail);
     }
